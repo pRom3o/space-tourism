@@ -9,9 +9,9 @@ import NavBar from '@/components/NavBar.vue';
     <div
       class="flex flex-col md:flex-row items-center justify-between w-full h-3/4 md:px-64 px-8 mt-4"
     >
-      <div class="text-white w-full md:w-[350px] text-center md:text-start flex-col space-y-5">
-        <p class="text-2xl font-light">SO, YOU WANT TO TRAVEL TO</p>
-        <p class="font-medium md:text-[120px]">SPACE</p>
+      <div class="text-white w-full md:w-[350px] text-center md:text-start flex-col pt-8 px-1">
+        <p class="md:text-2xl text-xl font-light">SO, YOU WANT TO TRAVEL TO</p>
+        <p class="font-medium md:text-[120px] text-[90px]">SPACE</p>
         <p class="font-light">
           Let's face it; if you want to go to space, you might as well genuinely go to outer space
           not hover kind of on the edge of it. Well sit back, and relax because we'll give you a
