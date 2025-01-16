@@ -12,7 +12,6 @@ export default {
         'technology-mobile': "url('technology/background-technology-mobile.jpg')",
         crew: "url('crew/background-crew-desktop.jpg')",
         'crew-mobile': "url('crew/background-crew-mobile.jpg')",
-        mars: "url('destination/image-mars.jpg')",
       },
     },
   },

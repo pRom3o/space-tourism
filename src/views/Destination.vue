@@ -11,6 +11,7 @@ const currentDestination = ref(null);
 // Function to set the first destination on mount or based on interaction
 const getDestination = () => {
   currentDestination.value = destinations[0];
+  console.log(currentDestination.value);
 };
 
 onMounted(getDestination);
@@ -20,8 +21,6 @@ onMounted(getDestination);
 const selectDestination = (destination) => {
   currentDestination.value = destination;
 };
-
-console.log(currentDestination); // Will show the current selected destination
 </script>
 
 <template>
@@ -32,9 +31,9 @@ console.log(currentDestination); // Will show the current selected destination
         <p class="font-light flex text-2xl">
           01 <span class="font-medium ml-4">PICK YOUR DESTINATION</span>
         </p>
-        <img :src="currentDestination.images['png']" alt="#" class="w-1/2 bg-cover" />
+        <img :src="currentDestination.images['png']" alt="#" class="w-2/3" />
       </div>
-      <div class="w-1/2" v-if="currentDestination">
+      <div class="" v-if="currentDestination">
         <ul class="flex space-x-10">
           <li
             v-for="(destination, index) in destinations"
@@ -61,7 +60,7 @@ console.log(currentDestination); // Will show the current selected destination
           </div>
           <div class="flex flex-col space-y-2">
             <p class="font-light text-xs">EST. TIME TRAVEL</p>
-            <P class="text-2xl">{{ currentDestination.travel }}</P>
+            <p class="text-2xl">{{ currentDestination.travel }}</p>
           </div>
         </div>
       </div>
