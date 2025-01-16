@@ -1,66 +1,67 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { RouterLink, useRoute } from 'vue-router';
+// import { RouterLink } from 'vue-router';
 import NavBar from '@/components/NavBar.vue';
 import data from '/data.json';
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 
-const route = useRoute();
-const destinations = ref(null);
+const destinations = data.destinations; // Ensure this is the correct format and data structure
+const currentDestination = ref(null);
 
-//function to get data based on current route
-
+// Function to set the first destination on mount or based on interaction
 const getDestination = () => {
-  const place = route.params.place; //gets place from route
-  destinations.value = data.destinations[place]; //gets data for current destination
+  currentDestination.value = destinations[0];
 };
 
-//gets data once page is mounted
 onMounted(getDestination);
-//watch for changes in route parameter
-watch(
-  () => route.params.place, //watches the 'place' param
-  () => {
-    getDestination(); //refetch data when parameter changes
-  },
-);
+
+// Function to update the destination when an item is clicked
+
+const selectDestination = (destination) => {
+  currentDestination.value = destination;
+};
+
+console.log(currentDestination); // Will show the current selected destination
 </script>
 
 <template>
   <div class="md:bg-destination bg-destination-mobile h-screen w-screen bg-cover">
     <NavBar />
-    <div class="flex items-center justify-center w-full px-72 h-2/3 text-white">
-      <div class="w-1/2 flex flex-col">
+    <div class="flex items-center justify-center w-full px-72 h-5/6 text-white">
+      <div class="w-1/2 space-y-20">
         <p class="font-light flex text-2xl">
           01 <span class="font-medium ml-4">PICK YOUR DESTINATION</span>
         </p>
-        <div class="bg-black w-full h-full"></div>
+        <img :src="currentDestination.images['png']" alt="#" class="w-1/2 bg-cover" />
       </div>
-      <div class="w-1/2 flex flex-col space-y-4" v-if="destinations">
-        <ul class="w-full h-10">
+      <div class="w-1/2" v-if="currentDestination">
+        <ul class="flex space-x-10">
           <li
-            class="flex items-center"
-            v-for="(item, key) in Object.keys(data.destinations)"
-            :key="key"
+            v-for="(destination, index) in destinations"
+            :key="index"
+            @click="selectDestination(destination)"
+            class="cursor-pointer py-2 font-extralight text-sm"
+            :class="{ 'border-b border-white': currentDestination.name === destination.name }"
           >
-            <RouterLink :to="`/Destinations/${item}`">{{
-              data.destinations[item].name
-            }}</RouterLink>
+            {{ destination.name }}
           </li>
         </ul>
-        <p class="font-semibold text-[100px]">{{ data.destinations.name }}</p>
-        <p>
-          {{ data.destinations.description }}
-        </p>
-        <hr class="border-gray-400 w-full" />
-        <div class="flex items-center space-x-10">
-          <div class="flex flex-col space-y-2 text-sm">
-            <p class="font-light">AVG. DISTANCE</p>
-            <p class="">{{ data.destinations.distance }}</p>
+        <!-- Assuming each destination has a description -->
+        <div v-if="currentDestination" class="w-[320px] h-1/2 space-y-14">
+          <div>
+            <h2 class="text-[100px]">{{ currentDestination.name }}</h2>
+            <p class="mt-2">{{ currentDestination.description }}</p>
           </div>
-          <div class="flex flex-col space-y-2 text-sm">
-            <p class="font-light">EST. TRAVEL TIME</p>
-            <p>{{ data.destinations.travel }}</p>
+          <hr class="opacity-50" />
+        </div>
+        <div class="flex items-center space-x-32 mt-5">
+          <div class="flex flex-col space-y-2">
+            <p class="font-light text-xs">AVG. DISTANCE</p>
+            <p class="text-2xl">{{ currentDestination.distance }}</p>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <p class="font-light text-xs">EST. TIME TRAVEL</p>
+            <P class="text-2xl">{{ currentDestination.travel }}</P>
           </div>
         </div>
       </div>

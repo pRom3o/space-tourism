@@ -35,7 +35,7 @@ const toggleMenu = () => {
             </g>
           </svg>
         </p>
-        <hr class="w-[700px] border-gray-500 absolute left-[15%] z-10 hidden md:flex" />
+        <hr class="max-w-[700px] border-gray-500 absolute left-[15%] z-10 hidden lg:flex" />
       </div>
       <div class="backdrop-blur-lg w-1/2 text-white px-16 ml-16 hidden md:inline-block">
         <ul class="flex items-center justify-around px-3">
