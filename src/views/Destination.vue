@@ -14,7 +14,7 @@ const getDestination = () => {
   console.log(currentDestination.value);
 };
 
-onMounted(getDestination);
+onMounted(getDestination());
 
 // Function to update the destination when an item is clicked
 
