@@ -7,7 +7,7 @@ import NavBar from '@/components/NavBar.vue';
   <div class="md:bg-home bg-home-mobile h-screen w-screen bg-cover">
     <nav><NavBar /></nav>
     <div
-      class="flex flex-col lg:flex-row items-center justify-center lg:h-2/3 space-y-20 md:px-16 px-8 mt-4"
+      class="flex flex-col lg:flex-row items-center justify-center lg:h-5/6 space-y-20 md:px-16 px-8 mt-4"
     >
       <div class="text-white w-full md:w-2/3 text-center md:text-start flex-col pt-8 px-1">
         <p class="text-2xl font-light">SO, YOU WANT TO TRAVEL TO</p>

@@ -23,7 +23,7 @@ const toggleMenu = () => {
 <template>
   <div class="h-20 w-screen">
     <div class="w-full flex items-center">
-      <div class="w-1/2 flex items-center relative p-4">
+      <div class="w-1/2 flex items-center p-4">
         <p class="md:mr-24">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
             <g fill="none" fill-rule="evenodd">
@@ -35,7 +35,7 @@ const toggleMenu = () => {
             </g>
           </svg>
         </p>
-        <hr class="max-w-[700px] border-gray-500 absolute left-[15%] z-10 hidden" />
+        <hr class="max-w-[700px] border-gray-500" />
       </div>
       <div
         class="backdrop-blur-lg md:max-w-1/2 lg:w-1/2 text-white px-16 ml-16 hidden md:inline-block"

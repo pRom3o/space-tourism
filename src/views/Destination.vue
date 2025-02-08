@@ -35,7 +35,7 @@ const selectDestination = (name) => {
         />
       </div>
       <div
-        class="max-h-2/3 lg:max-w-1/2 px-4 flex flex-col md:space-y-5 space-y-3"
+        class="h-2/3 lg:max-w-1/2 px-4 flex flex-col md:space-y-5 space-y-3"
         v-if="currentDestination"
       >
         <ul class="flex space-x-5 md:justify-start justify-center">
