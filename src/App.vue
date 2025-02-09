@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <router-view />
+  <router-view class="font-Lora" />
 </template>
 
-<style scoped></style>
+<style></style>

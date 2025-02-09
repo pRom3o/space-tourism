@@ -13,6 +13,7 @@ export default {
         crew: "url('crew/background-crew-desktop.jpg')",
         'crew-mobile': "url('crew/background-crew-mobile.jpg')",
       },
+      fontFamily: { Lora: 'serif' },
     },
   },
   plugins: [],
