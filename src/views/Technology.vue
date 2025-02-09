@@ -4,9 +4,10 @@ import NavBar from '@/components/NavBar.vue';
 import { ref } from 'vue';
 import * as data from '/data.json';
 
-const technology = data.technology;
-const currentTech = ref(technology[0]);
+const technology = data.technology; // store technology array from data.json import
+const currentTech = ref(technology[0]); // set the current display to the first object in the array
 
+// function to switch objects displaying details based on index
 const switchTech = (index) => {
   currentTech.value = technology[index];
 };
@@ -17,35 +18,46 @@ const switchTech = (index) => {
     <nav><NavBar /></nav>
     <div class="min-w-full h-5/6 flex items-center justify-center m-auto md:px-32 p-4 text-gray-50">
       <div
-        class="md:h-3/4 w-full flex flex-col md:flex-row items-center justify-between p-4 md:space-x-10 space-y-10 md:space-y-0"
+        class="md:h-3/4 min-h-3/4 w-full flex flex-col md:flex-row items-center justify-between p-4 md:space-x-10 space-y-10 md:space-y-0"
       >
-        <div class="h-3/4 w-1/2 flex flex-col justify-between p-5" v-if="currentTech">
-          <div class="w-full h-1/3 px-12">
-            <h1 class="text-xl md:text-2xl text-gray-300">
+        <!-- div to render all details of object {image excluded} -->
+        <div
+          class="md:h-3/4 md:w-1/2 sm:w-full max-h-1/2 flex flex-col justify-between md:p-5 space-y-5"
+          v-if="currentTech"
+        >
+          <div class="w-full md:px-12">
+            <h1 class="text-2xl text-gray-50">
               <span class="mr-2 text-[#B2BEB5]">03</span>SPACE LAUNCH 101
             </h1>
           </div>
-          <div class="flex justify-evenly">
+          <div class="flex md:justify-evenly justify-between items-center">
+            <!-- ul for redering indexes -->
             <ul class="flex flex-col space-y-5">
-              <li
-                class="p-6 w-16 h-16 rounded-full border border-[#B2BEB5] flex text-2xl items-center cursor-pointer"
+              <button
+                class="md:p-6 md:w-16 md:h-16 p-3 rounded-full border border-[#B2BEB5] flex md:text-2xl text-xl items-center"
                 v-for="(tech, index) in technology"
                 :key="index"
                 @click="switchTech(index)"
                 :class="{ 'bg-white text-black': currentTech.name === tech.name }"
               >
                 {{ index + 1 }}
-              </li>
+              </button>
             </ul>
-            <div class="w-2/3 space-y-5">
-              <p class="text-sm text-[#b2beb5]">THE TERMINOLOGY....</p>
-              <h2 class="uppercase md:text-3xl text-[#B2BEB5]">{{ currentTech.name }}</h2>
-              <p class="w-2/3">{{ currentTech.description }}</p>
+            <!-- div for texts -->
+            <div class="md:w-2/3 w-full space-y-5 md:px-0 px-5">
+              <p class="md:text-sm text-xs text-[#b2beb5]">THE TERMINOLOGY....</p>
+              <h2 class="uppercase text-3xl">{{ currentTech.name }}</h2>
+              <p class="md:w-2/3 md:text-base text-sm">{{ currentTech.description }}</p>
             </div>
           </div>
         </div>
-        <div class="h-full w-1/2 flex justify-end">
-          <img :src="currentTech.images['portrait']" alt="#" class="h-full w-2/3" />
+        <!-- div to render object image -->
+        <div class="md:h-full md:w-1/2 flex md:justify-end justify-center">
+          <img
+            :src="currentTech.images['portrait']"
+            alt="#"
+            class="md:w-2/3 md:h-full h-[300px] w-[300px]"
+          />
         </div>
       </div>
     </div>
